@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>志成</title>
+  <link rel="stylesheet" href="../plugins/element-ui/index.css">
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="./css/aplayer.css">
+  <!--<link rel="shortcut icon" href="images/favicon.ico">-->
+  <style type="text/css">
+      a:link {
+          outline: none;
+      }
+
+      a:active {
+          outline: none;
+      }
+
+      a:visited {
+          outline: none;
+      }
+
+      a:hover {
+          outline: none;
+      }
+
+      #logo {
+          image-rendering: -webkit-optimize-contrast;
+          image-rendering: crisp-edges;
+      }
+  </style>
+</head>
+<body>
+<div id="app">
+  <div class="header mindex">
+    <!-- head -->
+    <div class="w1200">
+      <div class="logo fl">
+        <a href="http://www.zc.vip/" data-text="zc">
+          <img id="logo" style="width: 147px; height: 47px;" src="assets/photo/logo.jpg" alt="zc">
+        </a>
+      </div>
+      <ul class="fr">
+        <li @click="toggleMenu(0, 'index')"><a href="javascript:;" class="selected" id="index">首页</a></li>
+        <li @click="toggleMenu(1, 'dynamic')"><a href="javascript:;" id="dynamic">智成动态</a></li>
+        <li @click="toggleMenu(2, 'product')"><a href="javascript:;" id="product">产品体系</a></li>
+        <!--<li class="submenu" data-key="ymxz"><a href="javascript:;">硬件设备</a></li>-->
+        <!--<li class="submenu" data-key="spjc"><a href="javascript:;">解决方案</a></li>-->
+        <!--<li @click="toggleMenu(3, 'product')"><a href="javascript:;" id="classic">典型用户</a></li>-->
+        <li @click="toggleMenu(3, 'about')"><a href="javascript:;" id="about">关于我们</a></li>
+      </ul>
+      <div class="clb"></div>
+    </div>
+  </div>
+  <div class="ibanner_wrap">
+    <div class="ibanner">
+      <ul class="DB_bgSet">
+        <li style="display: list-item; background: url(assets/photo/ibanner_01.png) repeat 100% 100%;"></li>
+        <li style="display: none; background: url(assets/photo/ibanner_02.png) repeat 100% 100%;"></li>
+        <li style="display: none; background: url(assets/photo/ibanner_03.png) repeat 100% 100%;"></li>
+      </ul>
+      <ul class="DB_imgSet" style="position: relative;">
+
+        <li style="position: absolute; display: none;">
+          <video width="700" height="600" controls class="DB_1_1_video" >
+            <source src="assets/mp4/video.mp4" type="video/mp4">
+          </video>
+          <div class="ib_text">
+            <div class="b">智成国际贸易有限公司</div>
+            <div class="s">XX市XX区XX路101号</div>
+            <p>董事长：吴澄智，工号：202104190217，联系电话：18852385623</p>
+            <p>21电子商务转本2班 邮箱：278231350@qq.com</p>
+          </div>
+        </li>
+        <li style="position: absolute; display: list-item;">
+          <img class="DB_1_1" src="assets/photo/index2.jpg" width="702" height="477" style="left: -20px; opacity: 1; display: block; top: 175px;">
+          <div class="ib_text">
+            <div class="b">智成国际贸易有限公司</div>
+            <div class="s">XX市XX区XX路101号</div>
+            <p>董事长：吴澄智，工号：202104190217，联系电话：18852385623</p>
+            <p>21电子商务转本2班 邮箱：278231350@qq.com</p>
+          </div>
+        </li>
+
+        <li style="position: absolute; display: none;">
+          <img class="DB_1_1" src="assets/photo/index3.jpg" width="702" height="477">
+          <div class="ib_text">
+            <div class="b">智成国际贸易有限公司</div>
+            <div class="s">XX市XX区XX路101号</div>
+            <p>董事长：吴澄智，工号：202104190217，联系电话：18852385623</p>
+            <p>21电子商务转本2班 邮箱：278231350@qq.com</p>
+          </div>
+        </li>
+      </ul>
+      <div class="DB_menuWrap">
+        <ul class="DB_menuSet">
+          <li class="select"><img src="assets/photo/ibanner_btn_on.png" width="30" height="7" alt="btnoff"></li>
+          <li><img src="assets/photo/ibanner_btn_off.png" width="30" height="7" alt="btnon"></li>
+          <li><img src="assets/photo/ibanner_btn_off.png" width="30" height="7" alt="btnoff"></li>
+        </ul>
+        <div class="DB_next" style="display: none;"><a href="javascript:;" class="png" data-text="banner_change"></a></div>
+        <div class="DB_prev" style="display: none;"><a href="javascript:;" class="png" data-text="banner_change"></a></div>
+      </div>
+    </div>
+    <div class="clb"></div>
+  </div>
+  <!-- 主营业务 -->
+  <div class="plist borb w1200" v-show="menuIndex == 0">
+    <div class="title">主营业务</div>
+    <div>
+      <img src="assets/photo/business.png" alt="business" style="margin-left: 55px;">
+    </div>
+  </div>
+  <div style="font-size: 18px; margin-top: 35px; margin-bottom: -25px" class="plist w1200" v-show="menuIndex == 0">企业文化</div>
+  <div class="icontent w1200" v-show="menuIndex == 0">
+    <div class="ic_item">
+      <img src="assets/photo/companyCulture.jpg" width="400" height="148">
+      <div class="ici_content">
+        <div class="title"><span class="el-icon-document">追求极致</span></div>
+        <p><img src="assets/photo/point.png">不断提高要求，延迟满足感</p>
+        <p><img src="assets/photo/point.png">在更大范围里找最优解</p>
+        <p><img src="assets/photo/point.png">不放过问题，思考本质</p>
+        <p><img src="assets/photo/point.png">持续学习和成长</p>
+      </div>
+    </div>
+    <div class="ic_item">
+      <img src="assets/photo/companyCulture2.jpg" width="400" height="148">
+      <div class="ici_content">
+        <div class="title"><span class="el-icon-user">务实敢为</span></div>
+        <p><img src="assets/photo/point.png">直接体验，深入事实</p>
+        <p><img src="assets/photo/point.png">不自嗨，注重效果</p>
+        <p><img src="assets/photo/point.png">能突破有担当，打破定式</p>
+        <p><img src="assets/photo/point.png">尝试多种可能，快速迭代</p>
+      </div>
+    </div>
+    <div class="ic_item">
+      <img src="assets/photo/companyCulture3.jpg" width="400" height="148">
+      <div class="ici_content">
+        <div class="title"><span class="el-icon-office-building">多元兼容</span></i></div>
+        <p><img src="assets/photo/point.png">理解并重视差异和多元，建立火星视角</p>
+        <p><img src="assets/photo/point.png">打造多元化的团队，欢迎不同背景的人才</p>
+        <p><img src="assets/photo/point.png">鼓励人人参与，集思广益</p>
+        <p><img src="assets/photo/point.png">兼容友好的工作环境</p>
+      </div>
+    </div>
+    <div class="clb"></div>
+  </div>
+  <div class="plist borb w1200"></div>
+
+  <!-- 新闻动态 -->
+  <div class="plist w1200" v-show="menuIndex == 1">
+    <div class="title">新闻动态</div>
+    <div style="display: flex; justify-content: space-around">
+      <el-card class="box-card">
+        <div class="news-title">
+          智成国际向东南大学捐赠480万元设立“智成国际助学金”
+        </div>
+        <div class="news-content">
+          <p style="text-indent: 2em;">
+            5月11日，智成国际贸易有限公司向东南大学捐赠设立“智成国际助学金”签约仪式在智成国际总部举行。东南大学副校长、教育基金会常务副理事长黄大卫，学生处副处长曹海燕，就业指导中心主任顾欣，发展委员会副主任、校友总会秘书长姚志彪，教育基金会秘书长芮振华，智成国际副总裁黄良发、曹睿等领导出席仪式
+          </p>
+        </div>
+      </el-card>
+
+      <el-card class="box-card">
+        <div class="news-title">
+          智成国际受邀出席复旦管理学院“瞰见”论坛
+        </div>
+        <div class="news-content">
+          <p style="text-indent: 2em;">
+            4月24日，复旦大学管理学院“瞰见”对话科创人物年度系列论坛在线上顺利举行。本次论坛邀请了复旦管院管理科学系冯天俊教授、天地汇供应链科技有限公司创始人兼董事长徐水波、圆通速递副总裁相峰、智成国际高级副总裁徐波，共同来探讨供应链的“柔”与“韧”。</p>
+          <p style="text-indent: 2em;">
+            论坛以“震荡中的供应链趋势前瞻”为主题，聚焦复杂局面考验下的城市物流韧性、供应链战略设计、风险监控与发展趋势前瞻。
+          </p>
+        </div>
+      </el-card>
+
+      <el-card class="box-card">
+        <div class="news-title">
+          智成国际受邀出席2022国际知识产权应用大会
+        </div>
+        <div class="news-content">
+          <p style="text-indent: 2em;">
+            4月26日，由江苏省商务厅、江苏省贸促会、江苏省知识产权局、南京江北新区管理委员会、南京市贸促会共同主办的2022国际知识产权应用暨项目合作大会线上开启，智成国际贸易有限公司副总裁李丽洁受邀出席并参与访谈。
+          </p>
+          <p style="text-indent: 2em">
+            本届大会围绕“知识产权价值实现与产业合作”主题开展系列对接研讨活动，进一步推动知识产权事业高质量发展，充分发挥知识产权运用对科技创新和现实生产力转化的助推作用, 搭建国际知识产权服务合作平台，打造公平竞争的市场环境和国际一流的营商环境。
+          </p>
+        </div>
+      </el-card>
+    </div>
+  </div>
+
+  <!-- 产品体系 -->
+  <div class="plist w1200" v-show="menuIndex == 2">
+    <div class="title">产品体系</div>
+    <div style="display: flex; justify-content: space-around">
+      <el-card class="box-card">
+        <img src="assets/photo/dairyProducts.jpg" alt="" style="width: 300px; height: 150px; margin-left: 20px">
+        <div style="margin-top: 10px;">
+          <h3 align="center" style="font-size: 20px; margin-bottom: 10px">乳制品</h3>
+          <p>主营乳粉类、油脂类产品，品类主要为全脂乳粉、脱脂乳粉、黄油、无水奶油等</p>
+        </div>
+      </el-card>
+
+      <el-card class="box-card">
+        <img src="assets/photo/agriculturalProducts.jpg" alt="" style="width: 300px; height: 150px; margin-left: 20px">
+        <div style="margin-top: 10px;">
+          <h3 align="center" style="font-size: 20px; margin-bottom: 10px">大宗农产品</h3>
+          <p align="center">转基因大豆和非转基因大豆、碎米</p>
+        </div>
+      </el-card>
+
+      <el-card class="box-card">
+        <img src="assets/photo/trading.gif" alt="" style="width: 300px; height: 150px; margin-left: 20px">
+        <div style="margin-top: 10px;">
+          <h3 align="center" style="font-size: 20px; margin-bottom: 10px">化工产品</h3>
+          <p>2022年代理进口13.44万吨，实现进口额10428万美元，供应商日本丸红株式会社。下游主要用于生产环氧乙烷。</p>
+        </div>
+      </el-card>
+    </div>
+  </div>
+
+  <!-- 关于我们 -->
+  <div class="plist w1200" v-show="menuIndex == 3">
+    <div class="title">企业简介</div>
+    <div>
+      <p style="text-indent: 2em;">
+        智成国际贸易有限公司杭州办是一家集生产加工、经销批发的私营独资企业，悬浮式电饼铛、电热锅、尼龙餐具、甩脂机、迷你跑车、弹跳鞋、电话会议终端机、不锈钢门、室内门、不粘锅、糖罐、家居用品是智成国际贸易有限公司杭州办的主营产品。智成国际贸易有限公司杭州办是一家经国家相关部门批准注册的企业。智成国际贸易有限公司杭州办以雄厚的实力、合理的价格、优良的服务与多家企业建立了长期的合作关系。智成国际贸易有限公司杭州办热诚欢迎各界前来参观、考察、洽谈业务。
+      </p>
+      <img src="assets/photo/history.png" alt="history" style="margin-left: 150px;">
+    </div>
+
+    <div class="title">经营理念</div>
+    <div style="margin-left: 450px;">
+      <div>
+        <span style="font-size: 20px">
+          <stong>使命 ：</stong><span style="font-size: 15px">竭尽全力创造客户认可的有价值的产品和服务</span>
+        </span>
+      </div>
+      <div>
+        <span style="font-size: 20px">
+          <stong>愿景 ：</stong><span style="font-size: 15px">成为奋斗者的家园</span>
+        </span>
+      </div>
+      <div>
+        <span style="font-size: 20px">
+          <stong>价值观 ：</stong><span style="font-size: 15px">客户、务实、创新、团队、担当、激情</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 音乐随心听 -->
+  <div class="plist w1200">
+    <div class="title">音乐随心听</div>
+    <div class="container">
+      <div id="player" class="aplayer aplayer-withlist">
+        <div class="aplayer-body">
+          <div class="aplayer-pic" style="background-image: url(&quot;//y.qq.com/music/photo_new/T002R300x300M000003FdArP2PlB1j_2.jpg?max_age=2592000&quot;); background-color: rgb(235, 208, 194);">
+            <div class="aplayer-button aplayer-play"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 16 31"><path d="M15.552 15.168q0.448 0.32 0.448 0.832 0 0.448-0.448 0.768l-13.696 8.512q-0.768 0.512-1.312 0.192t-0.544-1.28v-16.448q0-0.96 0.544-1.28t1.312 0.192z"></path></svg></div>
+          </div>
+          <div class="aplayer-info">
+            <div class="aplayer-music">
+              <span class="aplayer-title">恋</span>
+              <span class="aplayer-author"> - 星野源</span>
+            </div>
+            <div class="aplayer-lrc">
+              <div class="aplayer-lrc-contents" style="transform: translateY(0); -webkit-transform: translateY(0);"></div>
+            </div>
+            <div class="aplayer-controller">
+              <div class="aplayer-bar-wrap">
+                <div class="aplayer-bar">
+                  <div class="aplayer-loaded" style="width: 100%;"></div>
+                  <div class="aplayer-played" style="width: 0px; background: rgb(235, 208, 194);">
+                        <span class="aplayer-thumb" style="background: rgb(235, 208, 194);">
+                            <span class="aplayer-loading-icon"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 32 32"><path d="M4 16c0-6.6 5.4-12 12-12s12 5.4 12 12c0 1.2-0.8 2-2 2s-2-0.8-2-2c0-4.4-3.6-8-8-8s-8 3.6-8 8 3.6 8 8 8c1.2 0 2 0.8 2 2s-0.8 2-2 2c-6.6 0-12-5.4-12-12z"></path></svg></span>
+                        </span>
+                  </div>
+                </div>
+              </div>
+              <div class="aplayer-time">
+                <span class="aplayer-time-inner">
+                    <span class="aplayer-ptime">00:00</span> / <span class="aplayer-dtime">02:46</span>
+                </span>
+                <span class="aplayer-icon aplayer-icon-back">
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 32 32"><path d="M25.468 6.947c-0.326-0.172-0.724-0.151-1.030 0.057l-6.438 4.38v-3.553c0-0.371-0.205-0.71-0.532-0.884-0.326-0.172-0.724-0.151-1.030 0.057l-12 8.164c-0.274 0.186-0.438 0.496-0.438 0.827s0.164 0.641 0.438 0.827l12 8.168c0.169 0.115 0.365 0.174 0.562 0.174 0.16 0 0.321-0.038 0.468-0.116 0.327-0.173 0.532-0.514 0.532-0.884v-3.556l6.438 4.382c0.169 0.115 0.365 0.174 0.562 0.174 0.16 0 0.321-0.038 0.468-0.116 0.327-0.173 0.532-0.514 0.532-0.884v-16.333c0-0.371-0.205-0.71-0.532-0.884z"></path></svg>
+                </span>
+                <span class="aplayer-icon aplayer-icon-play">
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 16 31"><path d="M15.552 15.168q0.448 0.32 0.448 0.832 0 0.448-0.448 0.768l-13.696 8.512q-0.768 0.512-1.312 0.192t-0.544-1.28v-16.448q0-0.96 0.544-1.28t1.312 0.192z"></path></svg>
+                </span>
+                <span class="aplayer-icon aplayer-icon-forward">
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 32 32"><path d="M25.468 6.947c-0.326-0.172-0.724-0.151-1.030 0.057l-6.438 4.38v-3.553c0-0.371-0.205-0.71-0.532-0.884-0.326-0.172-0.724-0.151-1.030 0.057l-12 8.164c-0.274 0.186-0.438 0.496-0.438 0.827s0.164 0.641 0.438 0.827l12 8.168c0.169 0.115 0.365 0.174 0.562 0.174 0.16 0 0.321-0.038 0.468-0.116 0.327-0.173 0.532-0.514 0.532-0.884v-3.556l6.438 4.382c0.169 0.115 0.365 0.174 0.562 0.174 0.16 0 0.321-0.038 0.468-0.116 0.327-0.173 0.532-0.514 0.532-0.884v-16.333c0-0.371-0.205-0.71-0.532-0.884z"></path></svg>
+                </span>
+                <div class="aplayer-volume-wrap">
+                  <button type="button" class="aplayer-icon aplayer-icon-volume-down"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 28 32"><path d="M13.728 6.272v19.456q0 0.448-0.352 0.8t-0.8 0.32-0.8-0.32l-5.952-5.952h-4.672q-0.48 0-0.8-0.352t-0.352-0.8v-6.848q0-0.48 0.352-0.8t0.8-0.352h4.672l5.952-5.952q0.32-0.32 0.8-0.32t0.8 0.32 0.352 0.8zM20.576 16q0 1.344-0.768 2.528t-2.016 1.664q-0.16 0.096-0.448 0.096-0.448 0-0.8-0.32t-0.32-0.832q0-0.384 0.192-0.64t0.544-0.448 0.608-0.384 0.512-0.64 0.192-1.024-0.192-1.024-0.512-0.64-0.608-0.384-0.544-0.448-0.192-0.64q0-0.48 0.32-0.832t0.8-0.32q0.288 0 0.448 0.096 1.248 0.48 2.016 1.664t0.768 2.528z"></path></svg></button>
+                  <div class="aplayer-volume-bar-wrap">
+                    <div class="aplayer-volume-bar">
+                      <div class="aplayer-volume" style="height: 70%; background: rgb(235, 208, 194);"></div>
+                    </div>
+                  </div>
+                </div>
+                <button type="button" class="aplayer-icon aplayer-icon-order">
+                  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 32 32"><path d="M0.622 18.334h19.54v7.55l11.052-9.412-11.052-9.413v7.549h-19.54v3.725z"></path></svg>
+                </button>
+                <button type="button" class="aplayer-icon aplayer-icon-loop">
+                  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 29 32"><path d="M9.333 9.333h13.333v4l5.333-5.333-5.333-5.333v4h-16v8h2.667v-5.333zM22.667 22.667h-13.333v-4l-5.333 5.333 5.333 5.333v-4h16v-8h-2.667v5.333z"></path></svg>
+                </button>
+                <button type="button" class="aplayer-icon aplayer-icon-menu">
+                  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 22 32"><path d="M20.8 14.4q0.704 0 1.152 0.48t0.448 1.12-0.48 1.12-1.12 0.48h-19.2q-0.64 0-1.12-0.48t-0.48-1.12 0.448-1.12 1.152-0.48h19.2zM1.6 11.2q-0.64 0-1.12-0.48t-0.48-1.12 0.448-1.12 1.152-0.48h19.2q0.704 0 1.152 0.48t0.448 1.12-0.48 1.12-1.12 0.48h-19.2zM20.8 20.8q0.704 0 1.152 0.48t0.448 1.12-0.48 1.12-1.12 0.48h-19.2q-0.64 0-1.12-0.48t-0.48-1.12 0.448-1.12 1.152-0.48h19.2z"></path></svg>
+                </button>
+                <button type="button" class="aplayer-icon aplayer-icon-lrc">
+                  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 32 32"><path d="M26.667 5.333h-21.333c-0 0-0.001 0-0.001 0-1.472 0-2.666 1.194-2.666 2.666 0 0 0 0.001 0 0.001v-0 16c0 0 0 0.001 0 0.001 0 1.472 1.194 2.666 2.666 2.666 0 0 0.001 0 0.001 0h21.333c0 0 0.001 0 0.001 0 1.472 0 2.666-1.194 2.666-2.666 0-0 0-0.001 0-0.001v0-16c0-0 0-0.001 0-0.001 0-1.472-1.194-2.666-2.666-2.666-0 0-0.001 0-0.001 0h0zM5.333 16h5.333v2.667h-5.333v-2.667zM18.667 24h-13.333v-2.667h13.333v2.667zM26.667 24h-5.333v-2.667h5.333v2.667zM26.667 18.667h-13.333v-2.667h13.333v2.667z"></path></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="aplayer-notice"></div>
+          <div class="aplayer-miniswitcher"><button class="aplayer-icon"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 32 32"><path d="M22 16l-10.105-10.6-1.895 1.987 8.211 8.613-8.211 8.612 1.895 1.988 8.211-8.613z"></path></svg></button></div>
+        </div>
+        <div class="aplayer-list" style="max-height: 250px">
+          <ol style="max-height: 250px">
+
+            <li class="aplayer-list-light">
+              <span class="aplayer-list-cur" style="background-color: #ebd0c2;"></span>
+              <span class="aplayer-list-index">1</span>
+              <span class="aplayer-list-title">恋</span>
+              <span class="aplayer-list-author">星野源</span>
+            </li>
+
+            <li>
+              <span class="aplayer-list-cur" style="background-color: #46718b;"></span>
+              <span class="aplayer-list-index">2</span>
+              <span class="aplayer-list-title">光るなら</span>
+              <span class="aplayer-list-author">Goose house</span>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- footer -->
+  <div class="footer ifooter">
+    <p>Copyright © 2018-2022
+      <a target="_blank" href="http://www.ruoyi.vip">zc.vip</a> All Rights Reserved 智成
+    </p>
+    <p>
+      <a target="_blank" href="http://beian.miit.gov.cn">粤ICP备18046899号</a>&nbsp;&nbsp;|&nbsp;&nbsp; <img src="http://www.beian.gov.cn/img/ghs.png" style="width:16px;height:16px;display:inline-block;margin-right:4px;"><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030902003184">粤公网安备 44030902003184号</a>
+    </p>
+  </div>
+</div>
+<script src="../plugins/vuejs/vue.min.js"></script>
+<script src="../plugins/element-ui/index.js"></script>
+<script type="text/javascript" src="./js/jquery.min.js"></script>
+<script type="text/javascript" src="./js/index.js"></script>
+<script type="text/javascript" src="./js/aplayer.js"></script>
+<script>
+  Vue.config.productionTip = false;
+
+  new Vue({
+    el: '#app',
+    data() {
+      return {
+        menuIndex: 0,
+      }
+    },
+    methods: {
+      toggleMenu(menuIndex, menuId) {
+        if (menuId == 'index') {
+          $('#index').addClass('selected');
+          $('#dynamic').removeClass('selected');
+          $('#product').removeClass('selected');
+          $('#about').removeClass('selected');
+        } else if (menuId == 'dynamic') {
+          $('#dynamic').addClass('selected');
+          $('#index').removeClass('selected');
+          $('#product').removeClass('selected');
+          $('#about').removeClass('selected');
+        } else if (menuId == 'product') {
+          $('#product').addClass('selected');
+          $('#index').removeClass('selected');
+          $('#dynamic').removeClass('selected');
+          $('#about').removeClass('selected');
+        } else if (menuId == 'about') {
+          $('#about').addClass('selected');
+          $('#index').removeClass('selected');
+          $('#dynamic').removeClass('selected');
+          $('#product').removeClass('selected');
+        }
+        this.menuIndex = menuIndex;
+      }
+    },
+    mounted() {
+      const player = new APlayer({
+        element: document.getElementById('player'),
+        mini: false,
+        autoplay: false,
+        lrcType: false,
+        mutex: true,
+        theme: '#ad7a86',
+        order: 'list',
+        audio: [
+          {
+            name: '光るなら',
+            artist: 'Goose house',
+            url: './assets/music/光るなら.mp3',
+            cover: './assets/music/光るなら.jpg',
+            theme: '#ebd0c2'
+          }, {
+            name: '恋',
+            artist: '星野源',
+            url: './assets/music/恋.mp3',
+            cover: './assets/music/恋.jpg',
+            theme: '#46718b'
+          }
+        ]
+      });
+    }
+  })
+</script>
+</body>
+</html>
